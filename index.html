@@ -90,7 +90,7 @@
     #history-btn {
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #83CEEB ; /* azul */
+      background-color: #87CEEB; /* azul */
       color: #fff;
       border: none;
       cursor: pointer;
@@ -100,7 +100,7 @@
     }
 
     #history-btn:hover {
-      background-color: #87CEEB; /* Darker Green */
+      background-color: #00BFFF; /* Darker Blue */
     }
 
     #history-container {
@@ -124,7 +124,7 @@
 <body>
 
 <div id="background-animation"></div>
-<div id="player-name">você</div>
+<div id="player-name">Jogador</div>
 <div id="board"></div>
 <button id="history-btn" onclick="toggleHistory()">Histórico</button>
 <div id="history-container">
@@ -137,7 +137,7 @@
   const historyBtn = document.getElementById('history-btn');
   const historyContainer = document.getElementById('history-container');
   const historyContent = document.getElementById('history');
-  const playerName = 'de você';
+  const playerName = 'Você';
   let currentPlayer = 'X';
   let botName = 'Bot';
   let gameHistory = [];
@@ -204,11 +204,7 @@
       );
     });
 
-    if (winnerCombination) {
-      return true;
-    }
-
-    return false;
+    return !!winnerCombination;
   }
 
   function isBoardFull() {
@@ -220,9 +216,9 @@
     const cells = Array.from(document.getElementsByClassName('cell'));
     cells.forEach(cell => {
       cell.textContent = '';
-      cell.classList.remove('x', 'o');});
+      cell.classList.remove('x', 'o');
+    });
     currentPlayer = 'X';
-    makeBotMove();
   }
 
   function handleCellClick(event) {
